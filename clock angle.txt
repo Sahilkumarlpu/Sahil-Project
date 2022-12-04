@@ -1,0 +1,30 @@
+'''Project 18: [Roll numbers:58,60,61]
+Clock Angle Problem
+Clock Angle Problem: Given time in hh:mm format in 24-hour notation, calculate the shorter
+angle between the hour and minute hand in an analog clock.'''
+# Solution
+def findAngle(hh, mm):
+    # handle 24-hour notation
+    hh = hh % 12
+
+    # find the position of the hour's hand
+    h = (hh * 360) // 12 + (mm * 360) // (12 * 60)
+
+    # find the position of the minute's hand
+    m = (mm * 360) // (60)
+
+    # calculate the angle difference
+    angle = abs(h - m)
+
+    # consider the shorter angle and return it
+    if angle > 180:
+        angle = 360 - angle
+    return angle
+
+x=int(input("Enter the hour: "))
+y=int(input('Enter the minute: '))
+# Clock Angle Problem
+if __name__ == '__main__':
+    hh = x
+    mm = y
+    print("smallest angle between hour and minute is:", findAngle(hh, mm), "degree")
